@@ -17,5 +17,6 @@ public class ViaggioPayload {
 
     private String destinazione;
     private LocalDate data;
+    private StatoViaggio statoViaggio;
 
 }

@@ -15,6 +15,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 import static abdellah.U6L4.enums.StatoViaggio.COMPLETATO;
 import static abdellah.U6L4.enums.StatoViaggio.IN_PROGRAMMA;
@@ -53,4 +54,20 @@ public class ViaggiService {
     public Viaggio findById(Long viaggioId) {
         return this.viaggiRepository.findById(viaggioId).orElseThrow(() -> new NotFoundException(viaggioId));
     }
+
+    public Viaggio findByIdAndUpdate(Long viaggioId, ViaggioPayload body) {
+
+        Viaggio found = this.findById(viaggioId);
+
+        found.setData(body.getData());
+        found.setDestinazione(body.getDestinazione());
+        found.setStatoViaggio(body.getStatoViaggio());
+
+        Viaggio updateViaggio = this.viaggiRepository.save(found);
+        log.info("Il viaggio " + updateViaggio.getId() + " è stato modificato correttamente");
+
+        return updateViaggio;
+    }
+
+
 }
