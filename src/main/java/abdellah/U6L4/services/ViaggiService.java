@@ -4,6 +4,7 @@ import abdellah.U6L4.entities.Dipendente;
 import abdellah.U6L4.entities.Prenotazione;
 import abdellah.U6L4.entities.Viaggio;
 import abdellah.U6L4.exceptions.BadRequestException;
+import abdellah.U6L4.exceptions.NotFoundException;
 import abdellah.U6L4.payload.ViaggioPayload;
 import abdellah.U6L4.repositories.ViaggiRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -42,10 +43,14 @@ public class ViaggiService {
     }
 
     public Page<Viaggio> getAllViaggi(Integer page, Integer size, String sortBy){
-        if (size > 100 || size < 0) size = 10;
+        if (size > 100 || size < 0) size = 2;
         if (page < 0) page = 0;
         Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));
         return this.viaggiRepository.findAll(pageable);
 
+    }
+
+    public Viaggio findById(Long viaggioId) {
+        return this.viaggiRepository.findById(viaggioId).orElseThrow(() -> new NotFoundException(viaggioId));
     }
 }

@@ -38,7 +38,7 @@ public class DipendentiService {
     }
 
     public Page<Dipendente> getAllDipendenti(Integer page, Integer size, String sortBy){
-        if (size > 100 || size < 0) size = 10;
+        if (size > 100 || size < 0) size = 2;
         if (page < 0) page = 0;
         Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));
         return this.dipendentiRepository.findAll(pageable);

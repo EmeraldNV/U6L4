@@ -37,10 +37,12 @@ public class Viaggio {
     public Viaggio(String destinazione, LocalDate data) {
         this.destinazione = destinazione;
         this.data = data;
+        if (this.data != null) {
         if (data.isBefore(LocalDate.now())) {
             this.statoViaggio = COMPLETATO;
         } else {
             this.statoViaggio =IN_PROGRAMMA;
         }
+    }
     }
 }

@@ -26,7 +26,7 @@ public class ViaggioController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK) // 201
-    public Page<Viaggio> getAllDipendenti() {
+    public Page<Viaggio> getAllViaggi() {
         return this.viaggiService.getAllViaggi(0,10,"destinazione");
     }
 }
