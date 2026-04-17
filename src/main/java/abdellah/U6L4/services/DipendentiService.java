@@ -32,7 +32,7 @@ public class DipendentiService {
         Dipendente nuovoDipendente = new Dipendente(body.getUsername(),body.getNome(), body.getCognome(), body.getEmail());
         Dipendente dipendenteSalvato = this.dipendentiRepository.save(nuovoDipendente);
 
-        log.info("L'utente con id " + dipendenteSalvato.getId() + " è stato salvato correttamente!");
+        log.info("Il dipendente con id " + dipendenteSalvato.getId() + " è stato salvato correttamente!");
 
         return dipendenteSalvato;
     }

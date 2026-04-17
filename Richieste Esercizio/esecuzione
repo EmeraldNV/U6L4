@@ -2,3 +2,6 @@ log postman1 - post creazione utenti 12:20PM
 log postman2 - get tutti gli utenti con paginazione (per ora come test ho inserito 2 pagine di utenti) 12:42PM
 log postman3 - ricreazione db - creazione utenti errata (dati errati in postman) 12:48PM
 log postman4 - controllo mapping findAllDipendenti e controllo paginazione 12:51
+log postman5 - controllo creazioni viaggi su postman
+log postman6 - controllo chiama get all viaggi
+log postman7 - controllo exception bad request viaggi

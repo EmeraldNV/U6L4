@@ -22,13 +22,11 @@ public class PrenotazioniService {
 
 
     public Prenotazione save(PrenotazionePayload body) {
-        if (this.prenotazioniRepository.existsByDataRichiesta(body.getDataRichiesta()))
-            throw new BadRequestException("Hai gia' effettuato una prenotazione il " + body.getDataRichiesta() + "!");
 
         Prenotazione nuovaPrenotazione = new Prenotazione(body.getDataRichiesta(), body.getNote(), body.getViaggio(),body.getDipendente());
         Prenotazione prenotazioneSalvata = this.prenotazioniRepository.save(nuovaPrenotazione);
 
-        log.info("L'utente con id " + prenotazioneSalvata.getId() + " è stato salvato correttamente!");
+        log.info("La prenotazione  è stata salvata correttamente!");
 
         return prenotazioneSalvata;
     }

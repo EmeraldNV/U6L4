@@ -6,6 +6,9 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDate;
 
+import static abdellah.U6L4.enums.StatoViaggio.COMPLETATO;
+import static abdellah.U6L4.enums.StatoViaggio.IN_PROGRAMMA;
+
 @Entity
 
 
@@ -31,9 +34,13 @@ public class Viaggio {
     @Enumerated(EnumType.STRING)
     private StatoViaggio statoViaggio;
 
-    public Viaggio(String destinazione, LocalDate data, StatoViaggio statoViaggio) {
+    public Viaggio(String destinazione, LocalDate data) {
         this.destinazione = destinazione;
         this.data = data;
-        this.statoViaggio = statoViaggio;
+        if (data.isBefore(LocalDate.now())) {
+            this.statoViaggio = COMPLETATO;
+        } else {
+            this.statoViaggio =IN_PROGRAMMA;
+        }
     }
 }

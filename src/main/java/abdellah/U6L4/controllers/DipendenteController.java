@@ -27,7 +27,7 @@ public class DipendenteController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK) // 201
-    public Page<Dipendente> getAllDipendenti(@RequestBody DipendentePayload body) {
+    public Page<Dipendente> getAllDipendenti() {
         return this.dipendentiService.getAllDipendenti(0,10,"cognome");
     }
 }
