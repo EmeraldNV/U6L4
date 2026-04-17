@@ -23,7 +23,7 @@ public class PrenotazioniService {
 
     public Prenotazione save(PrenotazionePayload body) {
         if (this.prenotazioniRepository.existsByDataRichiesta(body.getDataRichiesta()))
-            throw new BadRequestException("La prenotazione per il giorno: " + body.getDataRichiesta() + " esiste gia'!");
+            throw new BadRequestException("Hai gia' effettuato una prenotazione il " + body.getDataRichiesta() + "!");
 
         Prenotazione nuovaPrenotazione = new Prenotazione(body.getDataRichiesta(), body.getNote(), body.getViaggio(),body.getDipendente());
         Prenotazione prenotazioneSalvata = this.prenotazioniRepository.save(nuovaPrenotazione);
